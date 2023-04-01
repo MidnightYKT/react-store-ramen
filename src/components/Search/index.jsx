@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoMdClose } from 'react-icons/io'
 
+import { SearchContext } from '../../App'
+
 import styles from './Search.module.scss'
 
-const Search = ({ searchValue, setSearchValue }) => {
+const Search = () => {
+    const { searchValue, setSearchValue } = useContext(SearchContext)
+
     return (
         <div className={styles.root}>
             <AiOutlineSearch className={styles.icon} size={20} />
