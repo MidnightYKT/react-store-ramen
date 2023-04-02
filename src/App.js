@@ -1,8 +1,6 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, createContext } from 'react'
 import './scss/app.scss'
 import { Route, Routes } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './redux/slices/filterSlice'
 
 import Header from './components/Header'
 import Home from './pages/Home'
