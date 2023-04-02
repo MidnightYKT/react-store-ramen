@@ -1,14 +1,30 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-function SneakerBlock({ name, price, imageUrl, sizes, types }) {
-    const [pizzaCount, setPizzaCount] = useState(0)
-    const [activeType, setActiveType] = useState(0)
-    const [activeSize, setActiveSize] = useState(0)
+import { addItem } from '../../redux/slices/cartSlice'
 
-    const typeNames = ['тонкое', 'традиционное']
+const typeNames = ['тонкое', 'традиционное']
 
-    const onClickAddButton = () => {
-        setPizzaCount(pizzaCount + 1)
+function SneakerBlock({ id, name, price, imageUrl, sizes, types }) {
+    const dispatch = useDispatch()
+    const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id == id))
+
+    const [activeType, setActiveType] = useState()
+    const [activeSize, setActiveSize] = useState()
+
+    const addedCount = cartItem ? cartItem.count : 0
+
+    const onClickAdd = () => {
+        const item = {
+            id,
+            name,
+            price,
+            imageUrl,
+            type: typeNames[activeType],
+            size: sizes[activeSize],
+        }
+        dispatch(addItem(item))
+        console.log('sizes', sizes[activeSize])
     }
 
     return (
@@ -29,11 +45,13 @@ function SneakerBlock({ name, price, imageUrl, sizes, types }) {
                         ))}
                     </ul>
                     <ul>
-                        {sizes.map((size) => (
+                        {sizes.map((size, i) => (
                             <li
                                 key={size}
-                                onClick={() => setActiveSize(size)}
-                                className={activeSize == size ? 'active' : ''}
+                                onClick={() => {
+                                    setActiveSize(i)
+                                }}
+                                className={activeSize == i ? 'active' : ''}
                             >
                                 {size} см.
                             </li>
@@ -41,11 +59,8 @@ function SneakerBlock({ name, price, imageUrl, sizes, types }) {
                     </ul>
                 </div>
                 <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">от {price} ₽</div>
-                    <button
-                        onClick={onClickAddButton}
-                        className="button button--outline button--add"
-                    >
+                    <div className="pizza-block__price">от {price} $</div>
+                    <button onClick={onClickAdd} className="button button--outline button--add">
                         <svg
                             width="12"
                             height="12"
@@ -59,7 +74,7 @@ function SneakerBlock({ name, price, imageUrl, sizes, types }) {
                             />
                         </svg>
                         <span>Добавить</span>
-                        <i>{pizzaCount}</i>
+                        {addedCount > 0 && <i>{addedCount}</i>}
                     </button>
                 </div>
             </div>
