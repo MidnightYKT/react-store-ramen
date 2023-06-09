@@ -1,13 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-export const fetchSneaker = createAsyncThunk('sneaker/fetchSneakerStatus', async (params) => {
-    const { sortBy, order, category, search, currentPage } = params
-    const { data } = await axios.get(
-        `https://6421ee0c86992901b2bf51ae.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-    )
-    return data
-})
+export const fetchSneaker = createAsyncThunk(
+    'sneaker/fetchSneakerStatus',
+    async (params, thunkApi) => {
+        const { sortBy, order, category, search, currentPage } = params
+        const { data } = await axios.get(
+            `https://6421ee0c86992901b2bf51ae.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+        )
+        return data
+    }
+)
 
 const initialState = {
     items: [],
@@ -38,6 +41,8 @@ export const sneakerSlice = createSlice({
             })
     },
 })
+
+export const selectSneakerData = (state) => state.sneaker
 
 export const { setItems } = sneakerSlice.actions
 

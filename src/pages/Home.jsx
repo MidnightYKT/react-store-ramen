@@ -3,26 +3,26 @@ import qs from 'qs'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice'
+import {
+    selectFilter,
+    setCategoryId,
+    setCurrentPage,
+    setFilters,
+} from '../redux/slices/filterSlice'
 import Categories from '../components/Categories'
 import Sort, { sortList } from '../components/Sort'
 import Skeleton from '../components/SneakerBlock/Skeleton'
 import SneakerBlock from '../components/SneakerBlock/'
 import Pagination from '../components/Pagination'
-import { SearchContext } from '../App'
-import { fetchSneaker } from '../redux/slices/sneakerSlice'
+import { fetchSneaker, selectSneakerData } from '../redux/slices/sneakerSlice'
 
 const Home = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    // const isSearch = useRef(false)
     const isMounted = useRef(false)
 
-    const { items, status } = useSelector((state) => state.sneaker)
-    const { categoryId, sort, currentPage } = useSelector((state) => state.filter)
-
-    // const [isLoading, setIsLoading] = useState(true)
-    const { searchValue } = useContext(SearchContext)
+    const { items, status } = useSelector(selectSneakerData)
+    const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter)
 
     const onChangeCategory = (id) => {
         dispatch(setCategoryId(id))
@@ -33,7 +33,6 @@ const Home = () => {
     }
 
     const getSneaker = async () => {
-        // setIsLoading(true)
         const sortBy = sort.sortProperty.replace('-', '')
         const order = sort.sortProperty.includes('-') ? 'asc' : 'desc'
         const category = categoryId > 0 ? `category=${categoryId}` : ''
