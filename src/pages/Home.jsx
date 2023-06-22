@@ -1,14 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import qs from 'qs'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {
-    selectFilter,
-    setCategoryId,
-    setCurrentPage,
-    setFilters,
-} from '../redux/slices/filterSlice'
+import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice'
 import Categories from '../components/Categories'
 import Sort, { sortList } from '../components/Sort'
 import Skeleton from '../components/SneakerBlock/Skeleton'
@@ -83,7 +77,11 @@ const Home = () => {
     //     }
     // }, [])
 
-    const pizzas = items.map((obj) => <SneakerBlock key={obj.id} {...obj} />)
+    const pizzas = items.map((obj) => (
+        <Link to={`/sneaker/${obj.id}`}>
+            <SneakerBlock key={obj.id} {...obj} />
+        </Link>
+    ))
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />)
 
     //Если был первый рендер, то запрашиваем пиццы
