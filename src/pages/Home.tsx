@@ -78,11 +78,7 @@ const Home: React.FC = () => {
     //     }
     // }, [])
 
-    const pizzas = items.map((obj: any) => (
-        <Link to={`/sneaker/${obj.id}`}>
-            <SneakerBlock key={obj.id} {...obj} />
-        </Link>
-    ))
+    const pizzas = items.map((obj: any) => <SneakerBlock key={obj.id} {...obj} />)
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />)
 
     //Если был первый рендер, то запрашиваем пиццы
