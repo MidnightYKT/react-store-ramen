@@ -6,11 +6,11 @@ import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/fil
 import Categories from '../components/Categories'
 import Sort, { sortList } from '../components/Sort'
 import Skeleton from '../components/SneakerBlock/Skeleton'
-import SneakerBlock from '../components/SneakerBlock/'
+import SneakerBlock from '../components/SneakerBlock'
 import Pagination from '../components/Pagination'
 import { fetchSneaker, selectSneakerData } from '../redux/slices/sneakerSlice'
 
-const Home = () => {
+const Home: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const isMounted = useRef(false)
@@ -18,11 +18,11 @@ const Home = () => {
     const { items, status } = useSelector(selectSneakerData)
     const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter)
 
-    const onChangeCategory = (id) => {
-        dispatch(setCategoryId(id))
+    const onChangeCategory = (idx: number) => {
+        dispatch(setCategoryId(idx))
     }
 
-    const onChangePage = (number) => {
+    const onChangePage = (number: number) => {
         dispatch(setCurrentPage(number))
     }
 
@@ -33,6 +33,7 @@ const Home = () => {
         const search = searchValue ? `&search=${searchValue}` : ''
 
         dispatch(
+            //@ts-ignore
             fetchSneaker({
                 sortBy,
                 order,
@@ -77,7 +78,7 @@ const Home = () => {
     //     }
     // }, [])
 
-    const pizzas = items.map((obj) => (
+    const pizzas = items.map((obj: any) => (
         <Link to={`/sneaker/${obj.id}`}>
             <SneakerBlock key={obj.id} {...obj} />
         </Link>

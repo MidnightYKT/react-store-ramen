@@ -3,14 +3,32 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { addItem, selectCartItemById } from '../../redux/slices/cartSlice'
 
+type SneakerBlockProps = {
+    id: string
+    name: string
+    price: number
+    imageUrl: string
+    sizes: number[]
+    types: number[]
+    rating: number
+}
+
 const typeNames = ['тонкое', 'традиционное']
 
-function SneakerBlock({ id, name, price, imageUrl, sizes, types }) {
+const SneakerBlock: React.FC<SneakerBlockProps> = ({
+    id,
+    name,
+    price,
+    imageUrl,
+    sizes,
+    types,
+    rating,
+}) => {
     const dispatch = useDispatch()
     const cartItem = useSelector(selectCartItemById(id))
 
-    const [activeType, setActiveType] = useState()
-    const [activeSize, setActiveSize] = useState()
+    const [activeType, setActiveType] = useState(0)
+    const [activeSize, setActiveSize] = useState(0)
 
     const addedCount = cartItem ? cartItem.count : 0
 
