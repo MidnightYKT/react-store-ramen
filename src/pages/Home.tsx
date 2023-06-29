@@ -8,11 +8,12 @@ import Sort, { sortList } from '../components/Sort'
 import Skeleton from '../components/SneakerBlock/Skeleton'
 import SneakerBlock from '../components/SneakerBlock'
 import Pagination from '../components/Pagination'
-import { fetchSneaker, selectSneakerData } from '../redux/slices/sneakerSlice'
+import { SearchSneakerParams, fetchSneaker, selectSneakerData } from '../redux/slices/sneakerSlice'
+import { useAppDispatch } from '../redux/store'
 
 const Home: React.FC = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const isMounted = useRef(false)
 
     const { items, status } = useSelector(selectSneakerData)
@@ -39,7 +40,7 @@ const Home: React.FC = () => {
                 order,
                 category,
                 search,
-                currentPage,
+                currentPage: String(currentPage),
             })
         )
 
@@ -57,21 +58,27 @@ const Home: React.FC = () => {
 
         //     navigate(`?${queryString}`)
         // }
-        // isMounted.current = true
+
+        // if (!window.location.search) {
+        //     dispatch(fetchSneaker({} as SearchSneakerParams))
+        // }
         getSneaker()
     }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
     //Если был первый рендер, то проверяем URL-параметры и сохраняем в редаксе
     // useEffect(() => {
     //     if (window.location.search) {
-    //         const params = qs.parse(window.location.search.substring(1))
-
-    //         const sort = sortList.find((obj) => obj.sortProperty == params.sortProperty)
+    //         const params = qs.parse(
+    //             window.location.search.substring(1)
+    //         ) as unknown as SearchSneakerParams
+    //         const sort = sortList.find((obj) => obj.sortProperty == params.sortBy)
 
     //         dispatch(
     //             setFilters({
-    //                 ...params,
-    //                 sort,
+    //                 searchValue: params.search,
+    //                 categoryId: Number(params.category),
+    //                 currentPage: Number(params.currentPage),
+    //                 sort: sort || sortList[0],
     //             })
     //         )
     //         // isSearch.current = true

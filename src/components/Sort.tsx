@@ -1,27 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectSort, setSort } from '../redux/slices/filterSlice'
-
-// const ObjectInformation = {
-//     age: 15,
-//     city: "Moscow",
-// }
+import { selectSort, setSort, sortPropertyEnum } from '../redux/slices/filterSlice'
 
 type SortItem = {
     name: string
-    sortProperty: string
+    sortProperty: sortPropertyEnum
 }
 
 export const sortList: SortItem[] = [
-    { name: 'Популярности (DESC)', sortProperty: 'rating' },
-    { name: 'Популярности (ASC)', sortProperty: '-rating' },
-    { name: 'Цене (DESC)', sortProperty: 'price' },
-    { name: 'Цене (ASC)', sortProperty: '-price' },
-    { name: 'По алфавиту (DESC)', sortProperty: 'title' },
-    { name: 'По алфавиту (ASC)', sortProperty: '-title' },
+    { name: 'Популярности (DESC)', sortProperty: sortPropertyEnum.RATING_DESC },
+    { name: 'Популярности (ASC)', sortProperty: sortPropertyEnum.RATING_ASC },
+    { name: 'Цене (DESC)', sortProperty: sortPropertyEnum.PRICE_DESC },
+    { name: 'Цене (ASC)', sortProperty: sortPropertyEnum.PRICE_ASC },
+    { name: 'По алфавиту (DESC)', sortProperty: sortPropertyEnum.TITLE_DESC },
+    { name: 'По алфавиту (ASC)', sortProperty: sortPropertyEnum.TITLE_ASC },
 ]
 
-function Sort() {
+function SortPopup() {
     const dispatch = useDispatch()
     const sort = useSelector(selectSort)
     const sortRef = useRef<HTMLDivElement>(null)
@@ -85,4 +80,4 @@ function Sort() {
     )
 }
 
-export default Sort
+export default SortPopup
