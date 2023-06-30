@@ -10,6 +10,7 @@ import SneakerBlock from '../components/SneakerBlock'
 import Pagination from '../components/Pagination'
 import { SearchSneakerParams, fetchSneaker, selectSneakerData } from '../redux/slices/sneakerSlice'
 import { useAppDispatch } from '../redux/store'
+import SortPopup from '../components/Sort'
 
 const Home: React.FC = () => {
     const navigate = useNavigate()
@@ -19,9 +20,9 @@ const Home: React.FC = () => {
     const { items, status } = useSelector(selectSneakerData)
     const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter)
 
-    const onChangeCategory = (idx: number) => {
+    const onChangeCategory = React.useCallback((idx: number) => {
         dispatch(setCategoryId(idx))
-    }
+    }, [])
 
     const onChangePage = (number: number) => {
         dispatch(setCurrentPage(number))
@@ -99,12 +100,14 @@ const Home: React.FC = () => {
     //     // isSearch.current = false
     // }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
+    console.log(categoryId)
+
     return (
         <>
             <div className="container">
                 <div className="content__top">
                     <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-                    <Sort />
+                    <SortPopup value={sort} />
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 {status == 'error' ? (
