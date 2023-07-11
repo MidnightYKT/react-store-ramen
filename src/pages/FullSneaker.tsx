@@ -20,7 +20,7 @@ const FullSneaker: React.FC = () => {
                 )
                 setSneaker(data)
             } catch (error) {
-                alert('Ошибка при получении кроссовок!')
+                alert('Error when receiving sneakers!')
                 navigate('/')
             }
         }
@@ -29,7 +29,7 @@ const FullSneaker: React.FC = () => {
     }, [])
 
     if (!sneaker) {
-        return <>Загрузка...</>
+        return <>Loading...</>
     }
 
     return (
@@ -39,7 +39,7 @@ const FullSneaker: React.FC = () => {
             <p>{sneaker.price}</p>
             <Link to="notqweqwe">
                 <button className="button button--outline button--add">
-                    <span>Назад</span>
+                    <span>Back</span>
                 </button>
             </Link>
         </div>

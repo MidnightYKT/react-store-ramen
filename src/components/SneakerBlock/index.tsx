@@ -15,7 +15,7 @@ type SneakerBlockProps = {
     rating: number
 }
 
-const typeNames = ['тонкое', 'традиционное']
+const typeNames = ['Medium', 'Large']
 
 const SneakerBlock: React.FC<SneakerBlockProps> = ({
     id,
@@ -95,7 +95,7 @@ const SneakerBlock: React.FC<SneakerBlockProps> = ({
                                 fill="white"
                             />
                         </svg>
-                        <span>Добавить</span>
+                        <span>Add</span>
                         {addedCount > 0 && <i>{addedCount}</i>}
                     </button>
                 </div>

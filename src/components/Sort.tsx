@@ -64,7 +64,7 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({ value }) => {
                         fill="#2C2C2C"
                     />
                 </svg>
-                <b>Сортировка по:</b>
+                <b>Sort by:</b>
                 <span onClick={() => setOpen(!open)}>{value.name}</span>
             </div>
             <div className="sort__popup">
