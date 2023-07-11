@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { useParams, useNavigate } from 'react-router-dom'
 
 const FullSneaker: React.FC = () => {
@@ -36,6 +37,11 @@ const FullSneaker: React.FC = () => {
             <img src={sneaker.imageUrl} />
             <h2>{sneaker.name}</h2>
             <p>{sneaker.price}</p>
+            <Link to="notqweqwe">
+                <button className="button button--outline button--add">
+                    <span>Назад</span>
+                </button>
+            </Link>
         </div>
     )
 }

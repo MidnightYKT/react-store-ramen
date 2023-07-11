@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-import Categories from '../components/Categories'
-import Sort, { sortList } from '../components/Sort'
-import Skeleton from '../components/SneakerBlock/Skeleton'
-import SneakerBlock from '../components/SneakerBlock'
-import Pagination from '../components/Pagination'
+import { Categories, Skeleton, SneakerBlock, Pagination } from '../components'
+
 import { fetchSneaker } from '../redux/sneaker/asyncActions'
 import { useAppDispatch } from '../redux/store'
 import SortPopup from '../components/Sort'
 import { selectFilter } from '../redux/filter/selectors'
 import { setCategoryId, setCurrentPage } from '../redux/filter/slice'
 import { selectSneakerData } from '../redux/sneaker/selectors'
+import { add } from '../utils/math'
 
 const Home: React.FC = () => {
     const navigate = useNavigate()
@@ -21,6 +19,8 @@ const Home: React.FC = () => {
 
     const { items, status } = useSelector(selectSneakerData)
     const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter)
+
+    add(777, 888)
 
     const onChangeCategory = React.useCallback((idx: number) => {
         dispatch(setCategoryId(idx))
