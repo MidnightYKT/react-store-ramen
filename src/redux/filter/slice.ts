@@ -1,26 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../store'
-
-export enum sortPropertyEnum {
-    RATING_DESC = 'rating',
-    RATING_ASC = '-rating',
-    TITLE_DESC = 'title',
-    TITLE_ASC = '-title',
-    PRICE_DESC = 'price',
-    PRICE_ASC = '-price',
-}
-
-export type Sort = {
-    name: string
-    sortProperty: sortPropertyEnum
-}
-
-export interface FilterSliceState {
-    searchValue: string
-    categoryId: number
-    currentPage: number
-    sort: Sort
-}
+import { FilterSliceState, Sort, sortPropertyEnum } from './type'
 
 const initialState: FilterSliceState = {
     searchValue: '',
@@ -69,10 +48,6 @@ export const filterSlice = createSlice({
     },
 })
 
-export const selectFilter = (state: RootState) => state.filter
-export const selectSort = (state: RootState) => state.filter.sort
-
-// Action creators are generated for each case reducer function
 export const { setCategoryId, setSort, setCurrentPage, setFilters, setSearchValue } =
     filterSlice.actions
 
