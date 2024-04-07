@@ -10,12 +10,12 @@ type SortItem = {
 }
 
 export const sortList: SortItem[] = [
-    { name: 'Популярности (DESC)', sortProperty: sortPropertyEnum.RATING_DESC },
-    { name: 'Популярности (ASC)', sortProperty: sortPropertyEnum.RATING_ASC },
-    { name: 'Цене (DESC)', sortProperty: sortPropertyEnum.PRICE_DESC },
-    { name: 'Цене (ASC)', sortProperty: sortPropertyEnum.PRICE_ASC },
-    { name: 'По алфавиту (DESC)', sortProperty: sortPropertyEnum.TITLE_DESC },
-    { name: 'По алфавиту (ASC)', sortProperty: sortPropertyEnum.TITLE_ASC },
+    { name: 'Popularity (DESC)', sortProperty: sortPropertyEnum.RATING_DESC },
+    { name: 'Popularity (ASC)', sortProperty: sortPropertyEnum.RATING_ASC },
+    { name: 'Price (DESC)', sortProperty: sortPropertyEnum.PRICE_DESC },
+    { name: 'Price (ASC)', sortProperty: sortPropertyEnum.PRICE_ASC },
+    { name: 'Alphabetically (DESC)', sortProperty: sortPropertyEnum.TITLE_DESC },
+    { name: 'Alphabetically (ASC)', sortProperty: sortPropertyEnum.TITLE_ASC },
 ]
 
 type SortPopupProps = {

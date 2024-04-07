@@ -102,8 +102,6 @@ const Home: React.FC = () => {
     //     // isSearch.current = false
     // }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
-    console.log(categoryId)
-
     return (
         <>
             <div className="container">

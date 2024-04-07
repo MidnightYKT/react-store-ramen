@@ -52,7 +52,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({
             <div className="cart__item-info">
                 <h3>{name}</h3>
                 <p>
-                    {type}, {size} см.
+                    {type}, {size} sm.
                 </p>
             </div>
             <div className="cart__item-count">

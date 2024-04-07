@@ -75,7 +75,7 @@ const SneakerBlock: React.FC<SneakerBlockProps> = ({
                                 }}
                                 className={activeSize == i ? 'active' : ''}
                             >
-                                {size} см.
+                                {size} sm.
                             </li>
                         ))}
                     </ul>
