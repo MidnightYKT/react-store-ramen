@@ -1,6 +1,4 @@
 .root {
-    position: relative;
-    left: -120px;
 }
 
 .input {
@@ -10,6 +8,7 @@
     padding-left: 40px;
     border-radius: 10px;
     font-size: 16px;
+    left: 0px;
     // transition: all 0.15s ease-in-out;
 
     // &:focus {
@@ -18,13 +17,35 @@
     // }
 }
 
+@media (min-width: 960px) {
+    .root {
+        position: relative;
+        left: -80px;
+    }
+    .input {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 12px 20px;
+        width: 300px;
+        padding-left: 40px;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+    .icon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        opacity: 0.3;
+        margin-top: 12px;
+    }
+}
+
 .icon {
     width: 24px;
     height: 24px;
     position: absolute;
     opacity: 0.3;
-    left: 12px;
     margin-top: 12px;
+    margin-left: 10px;
 }
 
 .clear {
