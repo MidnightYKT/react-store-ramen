@@ -15,7 +15,7 @@ type SneakerBlockProps = {
     rating: number
 }
 
-const typeNames = ['Medium', 'Large']
+const typeNames = ['Small', 'Medium', 'Large']
 
 const SneakerBlock: React.FC<SneakerBlockProps> = ({
     id,
@@ -66,7 +66,7 @@ const SneakerBlock: React.FC<SneakerBlockProps> = ({
                             </li>
                         ))}
                     </ul>
-                    <ul>
+                    {/* <ul>
                         {sizes.map((size, i) => (
                             <li
                                 key={size}
@@ -78,10 +78,10 @@ const SneakerBlock: React.FC<SneakerBlockProps> = ({
                                 {size} sm.
                             </li>
                         ))}
-                    </ul>
+                    </ul> */}
                 </div>
                 <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">от {price} $</div>
+                    <div className="pizza-block__price">Price: {price} $</div>
                     <button onClick={onClickAdd} className="button button--outline button--add">
                         <svg
                             width="12"

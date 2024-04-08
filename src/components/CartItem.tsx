@@ -51,9 +51,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({
             </div>
             <div className="cart__item-info">
                 <h3>{name}</h3>
-                <p>
-                    {type}, {size} sm.
-                </p>
+                <p>{type}</p>
             </div>
             <div className="cart__item-count">
                 <button

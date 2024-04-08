@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 
 import styles from './Search.module.scss'
-import { setSearchValue } from '../../redux/filter/slice'
+import { setCategoryId, setCurrentPage, setSearchValue } from '../../redux/filter/slice'
 
 const Search: React.FC = () => {
     const dispatch = useDispatch()
@@ -29,6 +29,8 @@ const Search: React.FC = () => {
     const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
         updateSearchValue(event.target.value)
+        dispatch(setCategoryId(0))
+        dispatch(setCurrentPage(1))
     }
 
     return (
