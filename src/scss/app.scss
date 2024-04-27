@@ -367,7 +367,6 @@ body {
 
     &--empty {
         margin: 0 auto;
-        width: 560px;
         text-align: center;
 
         h2 {
@@ -391,6 +390,10 @@ body {
             display: block;
             width: 300px;
             margin: 45px auto 60px;
+
+            @media (max-width: 645px) {
+                width: 200px;
+            }
         }
 
         .button--black {
@@ -399,6 +402,10 @@ body {
             margin: 0 auto;
             font-weight: 600;
             font-size: 18px;
+        }
+
+        @media (max-width: 645px) {
+            padding: 30px;
         }
     }
 }
