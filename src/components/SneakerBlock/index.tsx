@@ -81,7 +81,7 @@ const SneakerBlock: React.FC<SneakerBlockProps> = ({
                     </ul> */}
                 </div>
                 <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">Price: {price} $</div>
+                    <div className="pizza-block__price">Price: ${price}</div>
                     <button onClick={onClickAdd} className="button button--outline button--add">
                         <svg
                             width="12"

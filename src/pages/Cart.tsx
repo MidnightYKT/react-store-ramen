@@ -112,7 +112,7 @@ const Cart: React.FC = () => {
                         </span>
                         <span>
                             {' '}
-                            Order price: <b>{totalPrice} $</b>{' '}
+                            Order price: <b>${totalPrice}</b>{' '}
                         </span>
                     </div>
                     <div className="cart__bottom-buttons">

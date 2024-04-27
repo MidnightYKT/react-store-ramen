@@ -115,9 +115,9 @@ const Home: React.FC = () => {
                         <h1>
                             <span>😔</span>
                             <br />
-                            Произошла ошибка
+                            An error has occurred
                         </h1>
-                        <p>К сожалению, не удалось получить пиццы</p>
+                        <p>Unfortunately, we couldn't get ramen</p>
                     </div>
                 ) : (
                     <div className="content__items">{status == 'loading' ? skeletons : pizzas}</div>

@@ -1,4 +1,7 @@
 .root {
+    @media (max-width: 425px) {
+        margin-top: 10px;
+    }
 }
 
 .input {
@@ -9,33 +12,13 @@
     border-radius: 10px;
     font-size: 16px;
     left: 0px;
-    // transition: all 0.15s ease-in-out;
 
-    // &:focus {
-    //     border: 1px solid rgba(0, 0, 0, 0.2);
-    //     width: 400px;
-    // }
-}
+    @media (max-width: 768px) {
+        width: 90%;
+    }
 
-@media (min-width: 960px) {
-    .root {
-        position: relative;
-        left: -80px;
-    }
-    .input {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 12px 20px;
-        width: 300px;
-        padding-left: 40px;
-        border-radius: 10px;
-        font-size: 16px;
-    }
-    .icon {
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        opacity: 0.3;
-        margin-top: 12px;
+    @media (max-width: 425px) {
+        width: 100%;
     }
 }
 
