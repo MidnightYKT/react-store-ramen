@@ -120,6 +120,10 @@ body {
             margin: 0;
         }
     }
+
+    @media (max-width: 768px) {
+        padding: 5px;
+    }
 }
 
 .cart {
@@ -343,6 +347,11 @@ body {
                     b {
                         color: $orange;
                     }
+                }
+            }
+            @media (max-width: 645px) {
+                span {
+                    font-size: 16px;
                 }
             }
         }
