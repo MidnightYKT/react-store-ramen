@@ -23,7 +23,6 @@ const CartItemBlock: React.FC<CartItemProps> = ({
     count,
     imageUrl,
 }) => {
-    console.log('size', size)
     const dispatch = useDispatch()
 
     const onClickPlus = () => {
@@ -47,7 +46,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({
     return (
         <div className="cart__item">
             <div className="cart__item-img">
-                <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+                <img className="pizza-block__image" src={imageUrl} alt="Ramen" />
             </div>
             <div className="cart__item-info">
                 <h3>{name}</h3>
