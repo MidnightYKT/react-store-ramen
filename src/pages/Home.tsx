@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux'
 
 import { Categories, Skeleton, SneakerBlock, Pagination } from '../components'
 
-import { fetchSneaker } from '../redux/sneaker/asyncActions'
+import { fetchRamen } from '../redux/ramen/asyncActions'
 import { useAppDispatch } from '../redux/store'
 import SortPopup from '../components/Sort'
 import { selectFilter } from '../redux/filter/selectors'
 import { setCategoryId, setCurrentPage } from '../redux/filter/slice'
-import { selectSneakerData } from '../redux/sneaker/selectors'
+import { selectSneakerData } from '../redux/ramen/selectors'
 import { add } from '../utils/math'
 
 const Home: React.FC = () => {
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
 
         dispatch(
             //@ts-ignore
-            fetchSneaker({
+            fetchRamen({
                 sortBy,
                 order,
                 category,

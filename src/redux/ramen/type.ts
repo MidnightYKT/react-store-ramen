@@ -4,7 +4,7 @@ export enum Status {
     ERROR = 'error',
 }
 
-export type SearchSneakerParams = {
+export type SearchRamenParams = {
     sortBy: string
     order: string
     category: string
@@ -12,7 +12,7 @@ export type SearchSneakerParams = {
     currentPage: string
 }
 
-export type Sneaker = {
+export type Ramen = {
     id: string
     name: string
     price: number
@@ -22,7 +22,7 @@ export type Sneaker = {
     rating: number
 }
 
-export interface SneakerSliceState {
-    items: Sneaker[]
+export interface RamenSliceState {
+    items: Ramen[]
     status: Status
 }

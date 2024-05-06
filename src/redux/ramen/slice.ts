@@ -1,9 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
-import { SearchSneakerParams, Sneaker, SneakerSliceState, Status } from '../sneaker/type'
-import { fetchSneaker } from './asyncActions'
+import { createSlice } from '@reduxjs/toolkit'
+import { SearchRamenParams, Ramen, RamenSliceState, Status } from './type'
+import { fetchRamen } from './asyncActions'
 
-const initialState: SneakerSliceState = {
+const initialState: RamenSliceState = {
     items: [],
     status: Status.LOADING,
 }
@@ -17,15 +16,15 @@ export const sneakerSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchSneaker.pending, (state) => {
+        builder.addCase(fetchRamen.pending, (state) => {
             state.status = Status.LOADING
             state.items = []
         })
-        builder.addCase(fetchSneaker.fulfilled, (state, action) => {
+        builder.addCase(fetchRamen.fulfilled, (state, action) => {
             state.items = action.payload
             state.status = Status.SUCCES
         })
-        builder.addCase(fetchSneaker.rejected, (state) => {
+        builder.addCase(fetchRamen.rejected, (state) => {
             state.status = Status.ERROR
             state.items = []
         })

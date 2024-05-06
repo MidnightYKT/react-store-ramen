@@ -9,7 +9,7 @@ import Home from './pages/Home'
 import MainLayout from './layouts/MainLayout'
 
 const Cart = React.lazy(() => import('./pages/Cart'))
-const FullSneaker = React.lazy(() => import('./pages/FullSneaker'))
+const FullSneaker = React.lazy(() => import('./pages/FullRamen'))
 const NotFound = React.lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="sneaker/:id"
+                    path="ramen/:id"
                     element={
                         <Suspense fallback={<div>Loading...</div>}>
                             <FullSneaker />

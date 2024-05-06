@@ -5,7 +5,7 @@ import { selectCartItemById } from '../../redux/cart/selectors'
 import { CartItem } from '../../redux/cart/type'
 import { addItem } from '../../redux/cart/slice'
 
-type SneakerBlockProps = {
+type RamenBlockProps = {
     id: string
     name: string
     price: number
@@ -17,7 +17,7 @@ type SneakerBlockProps = {
 
 const typeNames = ['Small', 'Medium', 'Large']
 
-const SneakerBlock: React.FC<SneakerBlockProps> = ({
+const SneakerBlock: React.FC<RamenBlockProps> = ({
     id,
     name,
     price,
@@ -50,7 +50,7 @@ const SneakerBlock: React.FC<SneakerBlockProps> = ({
     return (
         <div className="pizza-block__wrapper">
             <div className="pizza-block">
-                <Link to={`/sneaker/${id}`}>
+                <Link key={id} to={`/ramen/${id}`}>
                     <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
                     <h4 className="pizza-block__title">{name}</h4>
                 </Link>

@@ -6,7 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 const FullSneaker: React.FC = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    const [sneaker, setSneaker] = React.useState<{
+    const [ramen, getRamen] = React.useState<{
         imageUrl: string
         name: string
         price: number
@@ -16,11 +16,11 @@ const FullSneaker: React.FC = () => {
         async function fetchSneaker() {
             try {
                 const { data } = await axios.get(
-                    'https://6421ee0c86992901b2bf51ae.mockapi.io/items/' + id
+                    `https://6421ee0c86992901b2bf51ae.mockapi.io/items/${id}`
                 )
-                setSneaker(data)
+                getRamen(data)
             } catch (error) {
-                alert('Error when receiving sneakers!')
+                alert('Error when receiving ramen!')
                 navigate('/')
             }
         }
@@ -28,16 +28,16 @@ const FullSneaker: React.FC = () => {
         fetchSneaker()
     }, [])
 
-    if (!sneaker) {
+    if (!ramen) {
         return <>Loading...</>
     }
 
     return (
-        <div className="container">
-            <img src={sneaker.imageUrl} />
-            <h2>{sneaker.name}</h2>
-            <p>{sneaker.price}</p>
-            <Link to="notqweqwe">
+        <div className="pizza-block">
+            <img className="pizza-block__image" src={ramen.imageUrl} alt="" />
+            <h2 className="pizza-block__title">{ramen.name}</h2>
+            <p>{ramen.price}</p>
+            <Link to="/">
                 <button className="button button--outline button--add">
                     <span>Back</span>
                 </button>
