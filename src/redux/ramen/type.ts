@@ -25,4 +25,5 @@ export type Ramen = {
 export interface RamenSliceState {
     items: Ramen[]
     status: Status
+    totalCount: number
 }

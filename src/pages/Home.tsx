@@ -17,8 +17,12 @@ const Home: React.FC = () => {
     const dispatch = useAppDispatch()
     const isMounted = useRef(false)
 
-    const { items, status } = useSelector(selectSneakerData)
+    const { items, status, totalCount } = useSelector(selectSneakerData)
     const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter)
+    
+    // Вычисляем количество страниц (4 товара на странице)
+    // Если totalCount = 0, используем минимальное значение 1, чтобы пагинация показывалась
+    const pageCount = totalCount > 0 ? Math.ceil(totalCount / 4) : 1
 
     add(777, 888)
 
@@ -122,7 +126,7 @@ const Home: React.FC = () => {
                 ) : (
                     <div className="content__items">{status == 'loading' ? skeletons : pizzas}</div>
                 )}
-                <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+                <Pagination currentPage={currentPage} onChangePage={onChangePage} pageCount={pageCount} />
             </div>
         </>
     )

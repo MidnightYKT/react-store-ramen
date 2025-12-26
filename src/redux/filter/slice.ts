@@ -21,6 +21,7 @@ export const filterSlice = createSlice({
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
             state.categoryId = action.payload
+            state.currentPage = 1 // Сбрасываем страницу на первую при смене категории
         },
         setSearchValue: (state, action: PayloadAction<string>) => {
             state.searchValue = action.payload

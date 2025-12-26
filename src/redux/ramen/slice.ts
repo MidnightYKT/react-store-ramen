@@ -5,6 +5,7 @@ import { fetchRamen } from './asyncActions'
 const initialState: RamenSliceState = {
     items: [],
     status: Status.LOADING,
+    totalCount: 0,
 }
 
 export const sneakerSlice = createSlice({
@@ -21,12 +22,14 @@ export const sneakerSlice = createSlice({
             state.items = []
         })
         builder.addCase(fetchRamen.fulfilled, (state, action) => {
-            state.items = action.payload
+            state.items = action.payload.items
+            state.totalCount = action.payload.totalCount
             state.status = Status.SUCCES
         })
         builder.addCase(fetchRamen.rejected, (state) => {
             state.status = Status.ERROR
             state.items = []
+            state.totalCount = 0
         })
     },
 })
